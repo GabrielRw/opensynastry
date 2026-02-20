@@ -2,6 +2,10 @@
   <h1>Open Synastry</h1>
   <p>An open-source frontend for astrological synastry analysis.</p>
   <p>Powered by <a href="http://freeastroapi.com">FreeAstroAPI.com</a></p>
+  <br/>
+  <a href="https://vercel.com/new/clone?repository-url=https://github.com/GabrielRw/opensynastry&env=ASTRO_API_KEY&envDescription=Your%20FreeAstroAPI%20key%20from%20freeastroapi.com">
+    <img src="https://vercel.com/button" alt="Deploy with Vercel" />
+  </a>
 </div>
 
 ---
