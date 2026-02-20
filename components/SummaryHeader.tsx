@@ -127,9 +127,6 @@ export default function SummaryHeader({ summary, payload }: SummaryHeaderProps) 
                         transition={{ delay: 0.7 }}
                         className="mt-12 pt-12 border-t border-ink-mid max-w-xl mx-auto"
                     >
-                        <h3 className="font-[family-name:var(--font-display)] text-2xl text-parchment mb-8 text-center">
-                            The Resonance Bands
-                        </h3>
                         <div className="space-y-3 text-left">
                             <div className="card-surface p-4 border-l-2 border-gold/40">
                                 <span className="text-[10px] text-gold/60 uppercase tracking-[0.2em] block mb-1">

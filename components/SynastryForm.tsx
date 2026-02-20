@@ -51,6 +51,7 @@ export default function SynastryForm() {
 
         const payload = {
             person_a: {
+                name: formData.a.name,
                 datetime: `${formData.a.date}T${formData.a.time || '12:00'}:00`,
                 tz_str: formData.a.location!.timezone || 'UTC',
                 location: {
@@ -60,6 +61,7 @@ export default function SynastryForm() {
                 },
             },
             person_b: {
+                name: formData.b.name,
                 datetime: `${formData.b.date}T${formData.b.time || '12:00'}:00`,
                 tz_str: formData.b.location!.timezone || 'UTC',
                 location: {
