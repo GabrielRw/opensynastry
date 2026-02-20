@@ -10,6 +10,12 @@
 
 ---
 
+## Deploying to Vercel
+
+Click the button above to clone this repo and deploy it instantly. During the setup, Vercel will ask you to fill in environment variables — make sure to add your `ASTRO_API_KEY`, which you can get for free at [freeastroapi.com](http://freeastroapi.com). Without it, the app will not be able to generate reports.
+
+Once deployed, visit your Vercel URL, enter two sets of birth details, and your synastry report will be generated on the spot.
+
 ## Overview
 
 Open Synastry is a web app built with **Next.js** and **Tailwind CSS**. It connects to the Synastry endpoint of [FreeAstroAPI.com](http://freeastroapi.com) to generate detailed relationship compatibility reports from two sets of birth data.
