@@ -47,6 +47,7 @@ async function handleRequest(inputData: any) {
                 archetype: true,
                 text: true,
                 aspects: true,
+                synastry_bands: true,
                 house_overlays: false, // Keep it lighter for now
             },
         },
@@ -167,6 +168,7 @@ function transformResponse(data: any): SynastryResponse {
             strengths,
             challenges,
             narrative: syn.archetype?.one_liner || '',
+            bands: syn.bands,
         },
         aspects,
     };

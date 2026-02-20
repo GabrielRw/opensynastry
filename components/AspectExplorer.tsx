@@ -179,7 +179,7 @@ export function AspectCard({ aspect, onClick }: { aspect: Aspect; onClick: () =>
             {/* Header */}
             <div className="flex items-start justify-between mb-3">
                 <div className="flex-1 min-w-0 pr-2">
-                    <h3 className="font-[family-name:var(--font-display)] text-lg text-parchment leading-snug group-hover:text-gold transition-colors duration-200">
+                    <h3 className="text-base font-medium text-parchment leading-snug group-hover:text-gold transition-colors duration-200">
                         {defaultBlock.title}
                     </h3>
                     <p className="text-[10px] text-parchment/30 uppercase tracking-widest mt-1">
@@ -191,14 +191,8 @@ export function AspectCard({ aspect, onClick }: { aspect: Aspect; onClick: () =>
                 </span>
             </div>
 
-            {/* ... (in AspectCard) */}
-            <div className="flex items-center gap-3 mb-3">
+            <div className="mb-3">
                 <span className="text-xs text-parchment/40">{strengthLabel(aspect.strength)}</span>
-                <div className="flex-1 h-px bg-ink-mid" />
-                <div className="flex items-center gap-2">
-                    <span className="text-[10px] text-parchment/30 uppercase tracking-wider">Intensity</span>
-                    <IntensityBars score={aspect.polarity_score} />
-                </div>
             </div>
 
             {/* One-liner from default block */}

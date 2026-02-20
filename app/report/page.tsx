@@ -7,6 +7,7 @@ import DomainScores from '@/components/DomainScores';
 import StrengthsChallenges from '@/components/StrengthsChallenges';
 import AspectExplorer from '@/components/AspectExplorer';
 import SkeletonLoader from '@/components/SkeletonLoader';
+import ReportActions from '@/components/ReportActions';
 import { fetchSynastryFromAPI } from '@/lib/synastry-service';
 import type { SynastryResponse, ReportPayload } from '@/lib/types';
 
@@ -39,30 +40,28 @@ export default async function ReportPage({ searchParams }: ReportPageProps) {
     if (!result || 'error' in result) {
         const msg = result && 'error' in result ? result.error : 'Invalid request';
         return (
-            <>
+            <main className="pt-0 pb-16 px-6 relative">
                 <SiteHeader />
-                <main className="pt-24 pb-16 px-6">
+                <div className="pt-24">
                     <ErrorState message={msg} />
-                </main>
-            </>
+                </div>
+            </main>
         );
     }
 
     const { data, payload } = result;
 
     return (
-        <>
-            <SiteHeader />
-            <Suspense fallback={<SkeletonLoader />}>
-                <ReportContent data={data} payload={payload} />
-            </Suspense>
-        </>
+        <Suspense fallback={<SkeletonLoader />}>
+            <ReportContent data={data} payload={payload} />
+        </Suspense>
     );
 }
 
 function ReportContent({ data, payload }: { data: SynastryResponse; payload: ReportPayload }) {
     return (
-        <main className="pt-16">
+        <main className="relative min-h-screen">
+            <SiteHeader />
             {/* A) Summary Header */}
             <SummaryHeader summary={data.summary} payload={payload} />
 
@@ -84,8 +83,15 @@ function ReportContent({ data, payload }: { data: SynastryResponse; payload: Rep
             {/* C) Aspect Explorer */}
             <AspectExplorer aspects={data.aspects} />
 
-            {/* Footer */}
-            <footer className="py-12 px-6 text-center border-t border-ink-mid mt-16">
+            {/* Footer & Actions */}
+            <footer className="py-16 px-6 text-center border-t border-ink-mid mt-16 max-w-4xl mx-auto">
+                <div className="mb-12">
+                    <h3 className="font-[family-name:var(--font-display)] text-2xl text-parchment mb-4">Share this connection</h3>
+                    <p className="text-sm text-parchment/60 mb-8 max-w-md mx-auto">
+                        Invite the other person to explore this synastry report with you, or save the link for later.
+                    </p>
+                    <ReportActions />
+                </div>
                 <p className="text-xs text-parchment/20">
                     Open Synastry · Report generated {new Date(data.meta.generated_at).toLocaleDateString()}
                 </p>

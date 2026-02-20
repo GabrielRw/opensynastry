@@ -21,7 +21,15 @@ export interface Summary {
   strengths: string[];
   challenges: string[];
   narrative: string;
+  bands?: SynastryBands;
   drivers_by_domain?: Record<string, DriverItem[]>;
+}
+
+export interface SynastryBands {
+  rules_version?: string;
+  theme: string;
+  core: string;
+  shadow: string;
 }
 
 export interface Archetype {

@@ -92,6 +92,7 @@ function transformCardsResponse(data: any): SynastryResponse {
             strengths,
             challenges,
             narrative: summary.narrative,
+            bands: summary.bands,
             drivers_by_domain,
         },
         aspects: aspects as Aspect[], // The shape matches per doc

@@ -25,7 +25,7 @@ export default function SummaryHeader({ summary, payload }: SummaryHeaderProps) 
     };
 
     return (
-        <section className="ambient-gradient py-32 px-6">
+        <section className="ambient-gradient pt-24 pb-32 px-6 min-h-screen">
             <div className="max-w-3xl mx-auto text-center">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -113,10 +113,50 @@ export default function SummaryHeader({ summary, payload }: SummaryHeaderProps) 
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5 }}
-                        className="mt-10 text-sm text-parchment/45 max-w-xl mx-auto leading-relaxed"
+                        className="mt-10 mb-12 text-sm text-parchment/45 max-w-xl mx-auto leading-relaxed"
                     >
                         {summary.narrative}
                     </motion.p>
+                )}
+
+                {/* Synastry Bands */}
+                {summary.bands && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.7 }}
+                        className="mt-12 pt-12 border-t border-ink-mid max-w-xl mx-auto"
+                    >
+                        <h3 className="font-[family-name:var(--font-display)] text-2xl text-parchment mb-8 text-center">
+                            The Resonance Bands
+                        </h3>
+                        <div className="space-y-3 text-left">
+                            <div className="card-surface p-4 border-l-2 border-gold/40">
+                                <span className="text-[10px] text-gold/60 uppercase tracking-[0.2em] block mb-1">
+                                    Bond Tone
+                                </span>
+                                <p className="text-sm text-parchment/90 leading-relaxed">
+                                    {summary.bands.theme}
+                                </p>
+                            </div>
+                            <div className="card-surface p-4 border-l-2 border-sage/40">
+                                <span className="text-[10px] text-sage/60 uppercase tracking-[0.2em] block mb-1">
+                                    Core Dynamic
+                                </span>
+                                <p className="text-sm text-parchment/90 leading-relaxed">
+                                    {summary.bands.core}
+                                </p>
+                            </div>
+                            <div className="card-surface p-4 border-l-2 border-rose/40">
+                                <span className="text-[10px] text-rose/60 uppercase tracking-[0.2em] block mb-1">
+                                    Watch For
+                                </span>
+                                <p className="text-sm text-parchment/90 leading-relaxed">
+                                    {summary.bands.shadow}
+                                </p>
+                            </div>
+                        </div>
+                    </motion.div>
                 )}
             </div>
         </section>
