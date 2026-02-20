@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+/* ─── Tailwind v4 theme tokens ─── */
+@theme inline {
+  --color-ink: #1a1614;
+  --color-ink-light: #2a2420;
+  --color-ink-mid: #3d342e;
+  --color-parchment: #f5f0e8;
+  --color-parchment-dim: #e8e0d4;
+  --color-parchment-dark: #d4cbc0;
+  --color-gold: #c9a96e;
+  --color-gold-dim: #a68b55;
+  --color-lilac: #9b8ec4;
+  --color-lilac-dim: #7d72a3;
+  --color-rose: #d4726a;
+  --color-sage: #8b9a6b;
+  --color-sky: #7aa2d4;
+  --color-ember: #c97a5a;
+  --color-plum: #b07aab;
+
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ─── Base ─── */
+:root {
+  --noise-opacity: 0.03;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-ink);
+  color: var(--color-parchment);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* ─── Noise texture overlay ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: var(--noise-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+}
+
+/* ─── Typography ─── */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink-mid);
+  border-radius: 3px;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+/* ─── Focus visible ─── */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* ─── Ambient header gradient ─── */
+@keyframes ambientShift {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.ambient-gradient {
+  background: linear-gradient(135deg,
+      var(--color-ink) 0%,
+      #261e1a 25%,
+      #1e1a26 50%,
+      #261e1a 75%,
+      var(--color-ink) 100%);
+  background-size: 300% 300%;
+  animation: ambientShift 20s ease-in-out infinite;
+}
+
+/* ─── Skeleton ─── */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg,
+      var(--color-ink-light) 25%,
+      var(--color-ink-mid) 50%,
+      var(--color-ink-light) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+/* ─── Card surface ─── */
+.card-surface {
+  background-color: var(--color-ink-light);
+  border: 1px solid var(--color-ink-mid);
+  border-radius: 8px;
+}
+
+/* ─── Drawer overlay ─── */
+.drawer-overlay {
+  background: rgba(10, 8, 6, 0.85);
+  backdrop-filter: blur(4px);
+}
+
+/* ─── Domain chip ─── */
+.domain-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  opacity: 0.85;
+}
