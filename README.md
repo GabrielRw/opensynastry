@@ -1,97 +1,98 @@
-# Open Synastry
+<div align="center">
+  <h1>◈ Open Synastry</h1>
+  <p>A beautifully crafted open-source frontend for building astrological synastry applications.</p>
+</div>
 
-A modern, editorial-style synastry report web app built with Next.js 14+, Tailwind CSS, Framer Motion, and Radix UI.
+<div align="center">
+  <strong>Powered by <a href="http://freeastroapi.com">FreeAstroAPI.com</a></strong>
+</div>
 
-## Getting Started
+---
 
-### Prerequisites
+## 🌌 Overview
 
-- Node.js 18+
-- npm
+**Open Synastry** is a modern, responsive, and aesthetically stunning UI built with **Next.js** and **Tailwind CSS**. It is designed to consume astrological compatibility data specifically from the advanced Synastry endpoint provided by [FreeAstroAPI.com](http://freeastroapi.com).
 
-### Environment Variables
+This repository is fully open-source. Whether you're an astrologer looking for a slick white-label report generator, a developer eager to explore React animation patterns with Framer Motion, or just someone curious about astrology APIs, this repo gives you everything you need to start generating gorgeous synastry reports immediately.
 
-Create a `.env.local` file in the project root:
+## ✨ Features
+
+- **Beautiful Aesthetic UI:** Deep, immersive dark mode featuring custom gradients (Ink, Parchment, Sage, Gold, and Rose), bringing real luxury to astrological data.
+- **Smart Data Visualization:** Custom SVG polarity rings, clean "Resonance Bands", and beautiful, interactive cards.
+- **Micro-Animations:** Fluid, tactile user interactions powered by Framer Motion.
+- **Shareable Reports:** Generate links that encapsulate full payload data, so users can effortlessly share their precise connection reports.
+- **Plug-and-Play with FreeAstroAPI:** Seamlessly integrates with the `v1/western/synastrycards` endpoint out-of-the-box.
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
 
 ```bash
-ASTRO_API_KEY=your_api_key_here
+git clone https://github.com/YourUsername/opensynastry.git
+cd opensynastry
 ```
 
-> **Security**: The API key is only used server-side. It is never exposed to the client bundle.
-
-### Installation
+### 2. Install dependencies
 
 ```bash
 npm install
+# or yarn install / pnpm install
 ```
 
-### Development
+### 3. Create your Environment Variables
+
+You will need an API key from [FreeAstroAPI.com](http://freeastroapi.com).
+
+Create a `.env.local` file in the root directory and add your key:
+
+```env
+ASTRO_API_KEY=your_free_astro_api_key_here
+```
+
+### 4. Run the Development Server
 
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the vibrant home interface. From there, you can enter two sets of birth details and instantly jump into the gorgeously rendered Synastry Report page!
 
-### Production Build
+## 🧩 Architecture
 
-```bash
-npm run build
-npm start
+- **`app/page.tsx`**: The majestic landing page featuring the SynastryForm and AspectPreview.
+- **`app/report/page.tsx`**: The dynamic report viewer. It decodes the Base64 URL parameter (`q`), proxies a secure request through `lib/synastry-service.ts`, and gracefully surfaces the payload.
+- **`components/SummaryHeader.tsx`**: Renders the overall composite score ring, the overarching narrative, and horizontal Resonance bands.
+- **`components/AspectExplorer.tsx` & `AspectCard.tsx`**: An elegant, filterable grid visualization separating astrological aspects by rank and intensity, opening into detailed modal drawers (`RitualDrawer.tsx`).
+
+## 🛠 Adapt & Customize
+
+Open Synastry is designed to be easily skinnable. Inside `app/globals.css`, you will find intuitive CSS Custom Properties describing the entire sophisticated palette.
+
+```css
+@theme inline {
+  --color-ink: #1a1614;
+  --color-parchment: #f5f0e8;
+  --color-gold: #c9a96e;
+  ...
+}
 ```
 
-## Routes
+Want to build a bright and airy version? Just change the tokens here and watch the entire platform adapt smoothly.
 
-| Route | Description |
-|---|---|
-| `/` | Landing page with hero, how-it-works, and card preview |
-| `/report` | Full synastry report with summary, domain scores, strengths/challenges, and aspect explorer |
-| `/share` | Poster-like share page with copy link/text |
-| `/api/synastry` | Server-side proxy to the external API (secure) |
+## 🤝 Contributing
 
-## Project Structure
+Contributions are entirely welcome—especially PRs extending report coverage to more astrological methodologies, or expanding the integration tightly into [FreeAstroAPI.com](http://freeastroapi.com)'s natal/transit libraries.
 
-```
-app/
-  page.tsx              # Landing page
-  layout.tsx            # Root layout
-  globals.css           # Design system + Tailwind tokens
-  api/synastry/route.ts # Secure API proxy
-  report/
-    page.tsx            # Report page (RSC)
-    loading.tsx         # Skeleton loader
-    error.tsx           # Error boundary
-  share/
-    page.tsx            # Share page
-components/
-  SiteHeader.tsx        # Navigation header
-  HeroSection.tsx       # Landing hero
-  HowItWorks.tsx        # 3-step explanation
-  AspectCardPreview.tsx  # Landing card preview
-  SummaryHeader.tsx     # Archetype + overall score
-  DomainScores.tsx      # 6 domain mini-rings
-  StrengthsChallenges.tsx # Top strengths/challenges
-  AspectExplorer.tsx    # Filterable aspect grid
-  RitualDrawer.tsx      # Aspect detail drawer
-  SharePoster.tsx       # Share poster layout
-  SkeletonLoader.tsx    # Loading skeleton
-  ErrorState.tsx        # Error state
-lib/
-  types.ts              # TypeScript interfaces
-  utils.ts              # Utility functions
-  fetcher.ts            # Server + client fetchers
-```
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## Design
+## 🙏 Acknowledgements
 
-- **Palette**: Deep ink (#1a1614), parchment (#f5f0e8), muted gold (#c9a96e), lilac (#9b8ec4)
-- **Typography**: Instrument Serif (display) + Inter (body)
-- **Aesthetic**: Editorial, occult-inspired, minimal micro-interactions
-- **Accessibility**: Keyboard navigation, reduced motion support, semantic HTML, good contrast
+- Astrological computations and aspect calculations proudly provided by [FreeAstroAPI.com](http://freeastroapi.com).
+- Frontend constructed utilizing the powerful combination of Next.js, Tailwind v4, and Framer Motion. 
 
-## Deploy on Vercel
-
-1. Push to GitHub
-2. Import in Vercel
-3. Set `ASTRO_API_KEY` in Vercel Environment Variables
-4. Deploy
+---
+*Built with intention and code.*

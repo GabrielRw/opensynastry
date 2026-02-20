@@ -92,8 +92,12 @@ function ReportContent({ data, payload }: { data: SynastryResponse; payload: Rep
                     </p>
                     <ReportActions />
                 </div>
-                <p className="text-xs text-parchment/20">
+                <p className="text-xs text-parchment/30 mt-8">
                     Open Synastry · Report generated {new Date(data.meta.generated_at).toLocaleDateString()}
+                    <br />
+                    <span className="opacity-60 mt-2 inline-block">
+                        Powered by <a href="http://freeastroapi.com" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors underline underline-offset-2">FreeAstroAPI.com</a>
+                    </span>
                 </p>
             </footer>
         </main>

@@ -50,8 +50,12 @@ export default function LandingPage() {
 
         {/* Footer */}
         <footer className="py-12 px-6 text-center">
-          <p className="text-xs text-parchment/20">
+          <p className="text-xs text-parchment/30">
             Open Synastry · Astrological compatibility, decoded.
+            <br />
+            <span className="opacity-60 mt-2 inline-block">
+              Powered by <a href="http://freeastroapi.com" target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors underline underline-offset-2">FreeAstroAPI.com</a>
+            </span>
           </p>
         </footer>
       </main>
