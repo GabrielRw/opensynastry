@@ -115,11 +115,13 @@ export default function SynastryForm() {
             <div className="p-1 min-h-[300px]">
                 {step === 1 ? (
                     <PersonInput
+                        key="person-a"
                         data={formData.a}
                         onChange={(field, val) => handleUpdate('a', field, val)}
                     />
                 ) : (
                     <PersonInput
+                        key="person-b"
                         data={formData.b}
                         onChange={(field, val) => handleUpdate('b', field, val)}
                     />
